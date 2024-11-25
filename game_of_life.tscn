@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5d20sa7clv41"]
+
+[ext_resource type="Script" path="res://game_of_life.gd" id="1_kt052"]
+[ext_resource type="TileSet" uid="uid://cortfl2qpwvej" path="res://game_of_life_tileset.tres" id="2_ba2qu"]
+
+[node name="GameOfLife" type="Node2D"]
+script = ExtResource("1_kt052")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_ba2qu")
+rendering_quadrant_size = 10
+format = 2
+
+[node name="GenerationLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1049.0
+offset_top = 618.0
+offset_right = 1145.0
+offset_bottom = 641.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Generation :"
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 995.0
+offset_top = 612.0
+offset_right = 1017.0
+offset_bottom = 643.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "▶"
+
+[node name="Pause" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 962.0
+offset_top = 613.0
+offset_right = 992.0
+offset_bottom = 644.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "||"
+
+[node name="TimeControlLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 773.0
+offset_top = 616.0
+offset_right = 869.0
+offset_bottom = 639.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Step Time : "
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeControl" type="SpinBox" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 867.0
+offset_top = 611.0
+offset_right = 950.063
+offset_bottom = 642.0
+grow_horizontal = 0
+grow_vertical = 0
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 0.1
+allow_greater = true
+alignment = 1
