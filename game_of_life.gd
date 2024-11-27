@@ -13,6 +13,8 @@ var parser: PlaintextPatternParser = PlaintextPatternParser.new()
 
 var chosen_pattern
 
+var mouse_left_down: bool = false
+
 func _ready():
 	# Calculate grid dimensions based on viewport size
 	var viewport_rect = get_viewport_rect().size
@@ -40,22 +42,26 @@ func _ready():
 		chosen_pattern = parser.parse(path)
 		print(chosen_pattern)
 		)
+	
+	$Control/DrawMode.toggled.connect(func(toggled_on): drawing = toggled_on)
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		# Start/stop drawing on mouse press/release
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			drawing = event.pressed
-		
-		if chosen_pattern != null:
-			place_pattern(chosen_pattern)
-			
-		# Toggle cell on click
+	if event is InputEventMouseButton:
+			if event.button_index == 1 and event.is_pressed():
+				mouse_left_down = true
+			elif event.button_index == 1 and not event.is_pressed():
+				mouse_left_down = false
+				
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:		
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			draw_at_mouse_position()
-	
+			if drawing:
+				# Toggle cell on click
+				draw_at_mouse_position()
+			elif chosen_pattern != null:
+				place_pattern(chosen_pattern)
+				
 	# Draw while mouse is held down
-	if event is InputEventMouseMotion and drawing:
+	if event is InputEventMouseMotion and drawing and mouse_left_down:
 		draw_at_mouse_position()
 
 func draw_at_mouse_position():

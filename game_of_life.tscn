@@ -37,10 +37,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1893.0
-offset_top = 964.0
-offset_right = 1915.0
-offset_bottom = 995.0
+offset_left = 1895.0
+offset_top = 966.0
+offset_right = 1917.0
+offset_bottom = 997.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "▶"
@@ -99,11 +99,18 @@ allow_greater = true
 alignment = 1
 
 [node name="FilePicker" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 1729.0
-offset_top = 48.0
-offset_right = 1894.0
-offset_bottom = 79.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1347.0
+offset_top = 966.0
+offset_right = 1530.0
+offset_bottom = 997.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Open .cells pattern file"
 
 [node name="FileDialog" type="FileDialog" parent="Control"]
@@ -114,3 +121,11 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.cells")
+
+[node name="DrawMode" type="CheckBox" parent="Control"]
+layout_mode = 0
+offset_left = 1535.0
+offset_top = 964.0
+offset_right = 1652.0
+offset_bottom = 995.0
+text = "Draw Mode"
