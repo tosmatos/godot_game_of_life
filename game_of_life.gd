@@ -28,12 +28,12 @@ func _ready():
 	
 	$TileMap.tile_set = preload("res://game_of_life_tileset.tres")
 	
-	$Timer.timeout.connect(_on_Timer_timeout)
+	$Timer.timeout.connect(func(): next_generation())
 	$Timer.wait_time = 0.1
 	
-	$Control/Play.pressed.connect(play)
-	$Control/Pause.pressed.connect(pause)
-	$Control/TimeControl.value_changed.connect(time_value_change)
+	$Control/Play.pressed.connect(func(): $Timer.start())
+	$Control/Pause.pressed.connect(func(): $Timer.stop())
+	$Control/TimeControl.value_changed.connect(func(value): $Timer.wait_time = value)
 	
 	$Control/FilePicker.pressed.connect(func(): $Control/FileDialog.visible = true)
 	$Control/FileDialog.file_selected.connect(func(path): 
@@ -162,15 +162,3 @@ func _on_resized():
 	
 	setup_grid()
 	update_tilemap()
-
-func _on_Timer_timeout():
-	next_generation()
-
-func pause():
-	$Timer.stop()
-
-func play():
-	$Timer.start()
-	
-func time_value_change(value: float):
-	$Timer.wait_time = value
