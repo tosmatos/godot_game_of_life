@@ -38,12 +38,11 @@ func _ready():
 	$Control/TimeControl.value_changed.connect(func(value): $Timer.wait_time = value)
 	
 	$Control/FilePicker.pressed.connect(func(): $Control/FileDialog.visible = true)
-	$Control/FileDialog.file_selected.connect(func(path): 
-		chosen_pattern = parser.parse(path)
-		print(chosen_pattern)
-		)
+	$Control/FileDialog.file_selected.connect(func(path): chosen_pattern = parser.parse(path))
 	
 	$Control/DrawMode.toggled.connect(func(toggled_on): drawing = toggled_on)
+	
+	$Control/Reset.pressed.connect(reset);
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -58,7 +57,7 @@ func _input(event):
 				# Toggle cell on click
 				draw_at_mouse_position()
 			elif chosen_pattern != null:
-				place_pattern(chosen_pattern)
+				place_pattern()
 				
 	# Draw while mouse is held down
 	if event is InputEventMouseMotion and drawing and mouse_left_down:
@@ -84,7 +83,7 @@ func draw_at_mouse_position():
 			$TileMap.clear_layer(0)  # Clear the entire layer, then redraw existing cells
 			redraw_grid()
 
-func place_pattern(pattern):
+func place_pattern():
 	print("placing pattern")
 	var global_mouse_pos = get_global_mouse_position()
 	
@@ -158,6 +157,13 @@ func update_tilemap():
 		for x in range(GRID_WIDTH):
 			if grid[y][x] == 1:
 				$TileMap.set_cell(0, Vector2i(x, y), 0, Vector2i(0, 0))
+				
+func reset():
+	$Timer.stop()
+	generation = 0
+	$Control/GenerationLabel.text = "Generation: 0"
+	setup_grid()
+	update_tilemap()
 
 func _on_resized():
 	# Recalculate grid if window is resized

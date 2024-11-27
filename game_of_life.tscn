@@ -91,9 +91,9 @@ offset_right = 1845.06
 offset_bottom = 995.0
 grow_horizontal = 0
 grow_vertical = 0
-min_value = 0.1
+min_value = 0.01
 max_value = 5.0
-step = 0.1
+step = 0.01
 value = 0.1
 allow_greater = true
 alignment = 1
@@ -129,3 +129,12 @@ offset_top = 964.0
 offset_right = 1652.0
 offset_bottom = 995.0
 text = "Draw Mode"
+
+[node name="Reset" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1859.0
+offset_top = 928.0
+offset_right = 1910.0
+offset_bottom = 959.0
+text = "Reset
+"
