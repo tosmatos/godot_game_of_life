@@ -40,6 +40,7 @@ func parse(file_path: String):
 		return
 	
 	var pattern = []
+	var width = get_width(text)
 	
 	for line in text.split("\n"):
 		if line.begins_with("!"): # ! are comments in plaintext gol files
@@ -52,6 +53,19 @@ func parse(file_path: String):
 			elif char == "o" or char == "O":
 				pattern_line.append(1)
 				
+		if pattern_line.size() < width: # Some (most) .cells files leave blanks after last alive cell
+			for i in range (0, width - pattern_line.size()):
+				pattern_line.append(0)
+				
 		pattern.append(pattern_line)
 
 	return pattern
+
+func get_width(text: String) -> int:
+	var widest = 0
+	
+	for line in text.split("\n"):
+		if line.length() > widest:
+			widest = line.length() - 1
+			
+	return widest
