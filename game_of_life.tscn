@@ -14,61 +14,63 @@ tile_set = ExtResource("2_ba2qu")
 rendering_quadrant_size = 10
 format = 2
 
-[node name="GenerationLabel" type="Label" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1049.0
-offset_top = 618.0
-offset_right = 1145.0
-offset_bottom = 641.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GenerationLabel" type="Label" parent="Control"]
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 23.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Generation :"
-metadata/_edit_use_anchors_ = true
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 995.0
-offset_top = 612.0
-offset_right = 1017.0
-offset_bottom = 643.0
+offset_left = 1893.0
+offset_top = 964.0
+offset_right = 1915.0
+offset_bottom = 995.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "▶"
 
-[node name="Pause" type="Button" parent="."]
+[node name="Pause" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 962.0
-offset_top = 613.0
-offset_right = 992.0
-offset_bottom = 644.0
+offset_left = 1857.0
+offset_top = 966.0
+offset_right = 1887.0
+offset_bottom = 997.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "||"
 
-[node name="TimeControlLabel" type="Label" parent="."]
+[node name="TimeControlLabel" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 773.0
-offset_top = 616.0
-offset_right = 869.0
-offset_bottom = 639.0
+offset_left = 1668.0
+offset_top = 969.0
+offset_right = 1764.0
+offset_bottom = 992.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
@@ -76,16 +78,17 @@ size_flags_vertical = 8
 text = "Step Time : "
 metadata/_edit_use_anchors_ = true
 
-[node name="TimeControl" type="SpinBox" parent="."]
+[node name="TimeControl" type="SpinBox" parent="Control"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 867.0
-offset_top = 611.0
-offset_right = 950.063
-offset_bottom = 642.0
+offset_left = 1762.0
+offset_top = 964.0
+offset_right = 1845.06
+offset_bottom = 995.0
 grow_horizontal = 0
 grow_vertical = 0
 min_value = 0.1
@@ -94,3 +97,20 @@ step = 0.1
 value = 0.1
 allow_greater = true
 alignment = 1
+
+[node name="FilePicker" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1729.0
+offset_top = 48.0
+offset_right = 1894.0
+offset_bottom = 79.0
+text = "Open .cells pattern file"
+
+[node name="FileDialog" type="FileDialog" parent="Control"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(1000, 500)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.cells")

@@ -14,3 +14,9 @@ config/name="GameOfLife"
 run/main_scene="res://game_of_life.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1000
+window/size/mode=2
